@@ -20,7 +20,7 @@ body {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px;
   }
   
   #myButton:hover {
@@ -44,9 +44,9 @@ body {
     font-size: 24px;
     color: #ffffff;
     margin-top: 20px;
-    font-family: 'Arial', sans-serif; /* Modern, clean font */
-    line-height: 1.6; /* Improved readability */
-    animation: zoomIn 0.5s ease; /* Animation */
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    animation: zoomIn 0.5s ease;
   }
 
   #volumeControl {
