@@ -11,7 +11,7 @@ body {
     text-align: center;
   }
   
-  #myButton {
+  #fortuneButton {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 18px;
@@ -23,7 +23,7 @@ body {
     border-radius: 5px;
   }
   
-  #myButton:hover {
+  #fortuneButton:hover {
     background-color: #333;
     transition: all 0.3s ease;
   }
@@ -57,6 +57,24 @@ body {
 
   #questionInput {
     background-color: white;
+  }
+
+  #playBgmButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  #playBgmButton:hover {
+    background-color: #333;
+    transition: all 0.3s ease;
   }
   
   header {

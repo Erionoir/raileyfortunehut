@@ -14,6 +14,10 @@ document.querySelector('#volume').oninput = function() {
   audio.volume = this.value;
 }
 
+document.querySelector('#playBgmButton').onclick = function() {
+    bgMusic.play();
+}
+
 var fortunes = [
     "Gaganda ang araw mo ngayon.",
     "Gaganda ang araw mo bukas.",
@@ -49,7 +53,7 @@ var fortunes = [
     "Papalpak ka sa pagupo",
 ];
 
-document.querySelector('#myButton').onclick = function() {
+document.querySelector('#fortuneButton').onclick = function() {
     var questionInput = document.querySelector('#questionInput');
     var question = questionInput.value;
     if (!question.endsWith('?')) {
@@ -70,8 +74,4 @@ document.querySelector('#myButton').onclick = function() {
     }, 10);
     questionInput.value = '';
     audio.play();
-}
-
-window.onload = function() {
-  bgMusic.play();
 }
