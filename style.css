@@ -65,3 +65,19 @@ canvas {
     color: #fff;
     margin-top: 20px;
 }
+
+/* Paf61 */
+@media (max-width: 600px) {
+    canvas {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* P4891 */
+@media (max-width: 600px) {
+    .paddle {
+        width: 5px;
+        height: 50px;
+    }
+}

@@ -1,8 +1,8 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
-const paddleWidth = 10;
-const paddleHeight = 100;
+const paddleWidth = window.innerWidth <= 600 ? 5 : 10;
+const paddleHeight = window.innerWidth <= 600 ? 50 : 100;
 const ballSize = 10;
 
 let player1Y = (canvas.height - paddleHeight) / 2;
