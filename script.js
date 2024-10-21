@@ -1,77 +1,86 @@
-var audio = new Audio('fart.mp3');
-var bgMusic = new Audio('breaking.mp3');
-bgMusic.loop = true;
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
 
-bgMusic.volume = 0.3;
+const paddleWidth = 10;
+const paddleHeight = 100;
+const ballSize = 10;
 
-document.body.style.backgroundImage = 'url(railey.jpg)';
-document.body.style.backgroundSize = '100% 100%';
-document.body.style.backgroundRepeat = 'no-repeat';
-document.body.style.backgroundPosition = 'center';
+let player1Y = (canvas.height - paddleHeight) / 2;
+let player2Y = (canvas.height - paddleHeight) / 2;
+let ballX = canvas.width / 2;
+let ballY = canvas.height / 2;
+let ballSpeedX = 5;
+let ballSpeedY = 5;
 
-document.querySelector('#volume').oninput = function() {
-  bgMusic.volume = this.value;
-  audio.volume = this.value;
+function drawRect(x, y, width, height, color) {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, width, height);
 }
 
-document.querySelector('#playBgmButton').onclick = function() {
-    bgMusic.play();
+function drawCircle(x, y, radius, color) {
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, Math.PI * 2, true);
+  ctx.fill();
 }
 
-var fortunes = [
-    "Gaganda ang araw mo ngayon.",
-    "Gaganda ang araw mo bukas.",
-    "May sorpresang nagaantay sayo.",
-    "May makikilala kang bago.",
-    "Makaka ace ka sa valo.",
-    "Makakapasa ka sa exam.",
-    "Makakapasa ka sa buhay.",
-    "Makakapasa ka sa pagsubok.",
-    "Makakapasa ka sa pagsubo.",
-    "Tang ina mo nasa court ako, wag mo ako abalahin.",
-    "Basketball is life",
-    "Pogi ka",
-    "Maganda ka",
-    "Gwapo ka",
-    "Papalpak ka sa buhay",
-    "Papalpak ka sa exam",
-    "Papalpak ka sa pagsubok",
-    "Papalpak ka sa pagsubo",
-    "Papalpak ka sa valo",
-    "Papalpak ka sa basketball",
-    "Papalpak ka sa court",
-    "Papalpak ka sa pagibig",
-    "Papalpak ka sa pagmamahal",
-    "Papalpak ka sa pagkain",
-    "Papalpak ka sa pagkanta",
-    "Papalpak ka sa pagtawa",
-    "Papalpak ka sa pagiyak",
-    "Papalpak ka sa pagtulong",
-    "Papalpak ka sa pagtakbo",
-    "Papalpak ka sa paglakad",
-    "Papalpak ka sa pagtayo",
-    "Papalpak ka sa pagupo",
-];
+function drawNet() {
+  for (let i = 0; i < canvas.height; i += 20) {
+    drawRect(canvas.width / 2 - 1, i, 2, 10, '#000');
+  }
+}
 
-document.querySelector('#fortuneButton').onclick = function() {
-    var questionInput = document.querySelector('#questionInput');
-    var question = questionInput.value;
-    if (!question.endsWith('?')) {
-        alert('Please enter a question!');
-        return;
+function moveBall() {
+  ballX += ballSpeedX;
+  ballY += ballSpeedY;
+
+  if (ballY <= 0 || ballY >= canvas.height) {
+    ballSpeedY = -ballSpeedY;
+  }
+
+  if (ballX <= paddleWidth) {
+    if (ballY > player1Y && ballY < player1Y + paddleHeight) {
+      ballSpeedX = -ballSpeedX;
+    } else {
+      resetBall();
     }
-    if (question.trim() === '') {
-        alert('Please enter a question!');
-        return;
+  }
+
+  if (ballX >= canvas.width - paddleWidth) {
+    if (ballY > player2Y && ballY < player2Y + paddleHeight) {
+      ballSpeedX = -ballSpeedX;
+    } else {
+      resetBall();
     }
-    var randomIndex = Math.floor(Math.random() * fortunes.length);
-    var fortune = fortunes[randomIndex];
-    var fortuneElement = document.querySelector('#fortune');
-    fortuneElement.textContent = fortune;
-    fortuneElement.style.animation = 'none';
-    setTimeout(function() {
-        fortuneElement.style.animation = '';
-    }, 10);
-    questionInput.value = '';
-    audio.play();
+  }
 }
+
+function resetBall() {
+  ballX = canvas.width / 2;
+  ballY = canvas.height / 2;
+  ballSpeedX = -ballSpeedX;
+}
+
+function movePaddle(event) {
+  const rect = canvas.getBoundingClientRect();
+  const root = document.documentElement;
+  const mouseY = event.clientY - rect.top - root.scrollTop;
+  player1Y = mouseY - paddleHeight / 2;
+}
+
+canvas.addEventListener('mousemove', movePaddle);
+
+function draw() {
+  drawRect(0, 0, canvas.width, canvas.height, '#fff');
+  drawNet();
+  drawRect(0, player1Y, paddleWidth, paddleHeight, '#000');
+  drawRect(canvas.width - paddleWidth, player2Y, paddleWidth, paddleHeight, '#000');
+  drawCircle(ballX, ballY, ballSize, '#000');
+}
+
+function gameLoop() {
+  moveBall();
+  draw();
+}
+
+setInterval(gameLoop, 1000 / 60);
