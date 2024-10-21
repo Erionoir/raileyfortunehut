@@ -1,25 +1,24 @@
-# Ping Pong Game
+# Turn Based Combat Game
 
-This is a simple ping pong game implemented using HTML, CSS, and JavaScript.
+This is a simple turn-based combat game implemented using HTML, CSS, and JavaScript.
 
 ## How to Play
 
-1. Use your mouse to move the left paddle up and down.
-2. The right paddle is controlled by the computer.
-3. The objective is to hit the ball past the opponent's paddle to score points.
-4. The game will reset the ball to the center after each point is scored.
+1. Each player takes turns to perform an action: Attack, Defend, or Heal.
+2. The objective is to reduce the opponent's health to zero.
+3. The game includes a timer to limit the duration of each turn.
+4. The game will reset the health and timer after each round.
 
 ### Mobile Controls
 
-1. Use your finger to touch and drag the left paddle up and down.
-2. The right paddle is controlled by the computer.
-3. The objective is to hit the ball past the opponent's paddle to score points.
-4. The game will reset the ball to the center after each point is scored.
+1. Use your finger to touch and select actions from the action menu.
+2. The objective is to reduce the opponent's health to zero.
+3. The game includes a timer to limit the duration of each turn.
+4. The game will reset the health and timer after each round.
 
 ## Game Details
 
-- The game is played on a canvas element.
-- The left paddle is controlled by the player using the mouse or touch.
-- The right paddle is controlled by the computer.
-- The ball bounces off the top and bottom edges of the canvas.
-- The game includes collision detection for the paddles and the ball.
+- The game is played with two squares representing the players.
+- Each player has a health value displayed on the screen.
+- Players can choose actions from the action menu to attack, defend, or heal.
+- The game includes a timer to limit the duration of each turn.

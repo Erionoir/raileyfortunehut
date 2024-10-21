@@ -17,33 +17,29 @@ body {
     height: 100%;
 }
 
-canvas {
-    background-color: #fff;
-    border: 2px solid #000;
-}
-
-.paddle {
-    width: 10px;
-    height: 100px;
+.square {
+    width: 50px;
+    height: 50px;
     background-color: #000;
-    position: absolute;
+    margin: 0 10px;
 }
 
-.ball {
-    width: 10px;
-    height: 10px;
-    background-color: #000;
-    position: absolute;
-    border-radius: 50%;
+.health-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #fff;
+    margin-top: 20px;
 }
 
-.control-buttons {
+.action-menu {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-.control-buttons button {
+.action-menu button {
     background-color: #000;
     color: #fff;
     border: none;
@@ -53,11 +49,11 @@ canvas {
     cursor: pointer;
 }
 
-.control-buttons button:hover {
+.action-menu button:hover {
     background-color: #444;
 }
 
-.score-container {
+.timer-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,18 +62,9 @@ canvas {
     margin-top: 20px;
 }
 
-/* Paf61 */
 @media (max-width: 600px) {
-    canvas {
-        width: 100%;
-        height: auto;
-    }
-}
-
-/* P4891 */
-@media (max-width: 600px) {
-    .paddle {
-        width: 5px;
-        height: 50px;
+    .square {
+        width: 30px;
+        height: 30px;
     }
 }
