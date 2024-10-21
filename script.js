@@ -75,7 +75,16 @@ function movePaddle(event) {
   player1Y = mouseY - paddleHeight / 2;
 }
 
+function movePaddleTouch(event) {
+  const rect = canvas.getBoundingClientRect();
+  const root = document.documentElement;
+  const touchY = event.touches[0].clientY - rect.top - root.scrollTop;
+  player1Y = touchY - paddleHeight / 2;
+}
+
 canvas.addEventListener('mousemove', movePaddle);
+canvas.addEventListener('touchstart', movePaddleTouch);
+canvas.addEventListener('touchmove', movePaddleTouch);
 
 document.getElementById('upButton').addEventListener('click', () => {
   player1Y -= 20;
