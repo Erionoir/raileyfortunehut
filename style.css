@@ -5,6 +5,11 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('railey.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
   
   .container {
@@ -21,6 +26,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
     border-radius: 5px;
+    animation: buttonAnimation 0.5s ease;
   }
   
   #fortuneButton:hover {
@@ -44,14 +50,14 @@ body {
     font-size: 24px;
     color: #ffffff;
     margin-top: 20px;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     animation: zoomIn 0.5s ease;
   }
 
   #volumeControl {
     margin-top: 10px;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #ffffff;
   }
 
@@ -70,6 +76,7 @@ body {
     transition: background-color 0.3s ease;
     border-radius: 5px;
     margin-top: 10px;
+    animation: buttonAnimation 0.5s ease;
   }
 
   #playBgmButton:hover {
@@ -79,7 +86,7 @@ body {
   
   header {
     text-align: center;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #ffffff;
   }
   
@@ -87,4 +94,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  @keyframes buttonAnimation {
+    from {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
