@@ -12,6 +12,9 @@ let ballY = canvas.height / 2;
 let ballSpeedX = 5;
 let ballSpeedY = 5;
 
+let player1Score = 0;
+let player2Score = 0;
+
 function drawRect(x, y, width, height, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, width, height);
@@ -42,6 +45,8 @@ function moveBall() {
     if (ballY > player1Y && ballY < player1Y + paddleHeight) {
       ballSpeedX = -ballSpeedX;
     } else {
+      player2Score++;
+      updateScore();
       resetBall();
     }
   }
@@ -50,6 +55,8 @@ function moveBall() {
     if (ballY > player2Y && ballY < player2Y + paddleHeight) {
       ballSpeedX = -ballSpeedX;
     } else {
+      player1Score++;
+      updateScore();
       resetBall();
     }
   }
@@ -70,6 +77,28 @@ function movePaddle(event) {
 
 canvas.addEventListener('mousemove', movePaddle);
 
+document.getElementById('upButton').addEventListener('click', () => {
+  player1Y -= 20;
+});
+
+document.getElementById('downButton').addEventListener('click', () => {
+  player1Y += 20;
+});
+
+function updateScore() {
+  document.getElementById('player1Score').innerText = player1Score;
+  document.getElementById('player2Score').innerText = player2Score;
+}
+
+function moveAIPaddle() {
+  const paddleCenter = player2Y + paddleHeight / 2;
+  if (paddleCenter < ballY - 35) {
+    player2Y += 6;
+  } else if (paddleCenter > ballY + 35) {
+    player2Y -= 6;
+  }
+}
+
 function draw() {
   drawRect(0, 0, canvas.width, canvas.height, '#fff');
   drawNet();
@@ -80,6 +109,7 @@ function draw() {
 
 function gameLoop() {
   moveBall();
+  moveAIPaddle();
   draw();
 }
 

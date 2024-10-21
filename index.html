@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ping Pong Game</title>
+    <title>Ping Pong Game for Android</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div class="game-container">
       <canvas id="gameCanvas" width="800" height="400"></canvas>
+    </div>
+    <div class="score-container">
+      <span id="player1Score">0</span> - <span id="player2Score">0</span>
+    </div>
+    <div class="control-buttons">
+      <button id="upButton">Up</button>
+      <button id="downButton">Down</button>
     </div>
     <script src="script.js"></script>
   </body>

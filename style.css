@@ -36,3 +36,32 @@ canvas {
     position: absolute;
     border-radius: 50%;
 }
+
+.control-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.control-buttons button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.control-buttons button:hover {
+    background-color: #444;
+}
+
+.score-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #fff;
+    margin-top: 20px;
+}
