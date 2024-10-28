@@ -7,6 +7,9 @@ body {
     padding: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #000;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .game-container {
@@ -36,21 +39,27 @@ body {
 .action-menu {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 0;
 }
 
 .action-menu button {
-    background-color: #000;
+    background: linear-gradient(45deg, #6b6b6b, #000);
     color: #fff;
     border: none;
     padding: 10px 20px;
     margin: 0 10px;
     font-size: 16px;
     cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .action-menu button:hover {
-    background-color: #444;
+    background: linear-gradient(45deg, #8b8b8b, #222);
 }
 
 .timer-container {
@@ -60,6 +69,33 @@ body {
     font-size: 24px;
     color: #fff;
     margin-top: 20px;
+}
+
+.action-log {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #fff;
+    margin-top: 20px;
+    height: 100px;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.game-over {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #fff;
+    margin-top: 20px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
 }
 
 @media (max-width: 600px) {
